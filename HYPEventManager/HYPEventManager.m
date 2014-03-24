@@ -55,7 +55,7 @@
 
 - (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
 {
-    [[HYPEventManager sharedManager] requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
         EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
         if (completion) {
             if (event) {
