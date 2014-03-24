@@ -1,12 +1,13 @@
 //
 //  HYPEventManager.m
+//  DansaniPlus
 //
 //  Created by Elvis Nunez on 24/10/13.
 //  Copyright (c) 2013 Hyper. All rights reserved.
 //
 
 #import "HYPEventManager.h"
-@import EventKit;
+#import <EventKit/EventKit.h>
 
 @interface HYPEventManager ()
 @property (nonatomic) BOOL hasAccessToEventsStore;
@@ -52,14 +53,18 @@
     }];
 }
 
-- (BOOL)isEventInCalendar:(NSString *)eventIdentifier
+- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
 {
-    EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
-    if (event) {
-        return YES;
-    }
-
-    return NO;
+    [[HYPEventManager sharedManager] requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+        EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
+        if (completion) {
+            if (event) {
+                completion(YES);
+            } else {
+                completion(NO);
+            }
+        }
+    }];
 }
 
 - (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
