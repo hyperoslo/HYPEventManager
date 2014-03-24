@@ -15,8 +15,6 @@
 
 - (void)deleteEventWithIdentifier:(NSString *)identifier completion:(void (^)(NSError *error))completion;
 
-- (BOOL)isEventInCalendar:(NSString *)eventIdentifier;
-
-- (void)requestAccessToEventStoreWithCompletion:(void (^)(BOOL success, NSError *error))completion;
+- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion;
 
 @end
