@@ -7,7 +7,7 @@
 //
 
 #import "HYPEventManager.h"
-#import <EventKit/EventKit.h>
+@import EventKit;
 
 @interface HYPEventManager ()
 @property (nonatomic) BOOL hasAccessToEventsStore;
