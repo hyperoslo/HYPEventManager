@@ -1,7 +1,7 @@
 HYPEventManager
 ===============
 
-HYPEventManager is the easiest way to add, update and remove iOS calendar activities.
+HYPEventManager is the easiest way to add, update and remove iOS calendar events.
 
 ### How to create an event with **HYPEventManager**?
 
