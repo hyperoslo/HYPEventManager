@@ -38,7 +38,6 @@ HYPEventManager is the easiest way to add, update and remove iOS calendar events
 
 ###TODO:
 - Make Demo project.
-- 
 
 Contributions
 =============
