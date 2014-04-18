@@ -39,6 +39,11 @@ HYPEventManager is the easiest way to add, update and remove iOS calendar events
 ###TODO:
 - Make Demo project.
 
+License
+=======
+
+HYPEventManager is fully open source under the MIT license. Check [LICENSE](https://github.com/hyperoslo/HYPEventManager/blob/master/LICENSE.md) for details.
+
 Contributions
 =============
 
