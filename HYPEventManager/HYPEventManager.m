@@ -79,6 +79,9 @@
 - (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate duration:(NSInteger)duration completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
     NSDate * endDate = [NSDate dateWithTimeInterval:3600 * duration sinceDate:startDate];
+    if (self.convertDatesToGMT) {
+        endDate = [self dateToGlobalTime:endDate];
+    }
     [self updateEvent:eventIdentifier
             withTitle:title
             startDate:startDate
