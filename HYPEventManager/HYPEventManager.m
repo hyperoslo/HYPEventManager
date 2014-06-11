@@ -23,8 +23,17 @@
     dispatch_once(&onceToken, ^{
         __sharedInstance = [[HYPEventManager alloc] init];
     });
-
+    
     return __sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.convertDatesToGMT = YES;
+    }
+    return self;
 }
 
 - (EKEventStore *)eventStore
@@ -90,7 +99,7 @@
             } else {
                 NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : @"Event not found in calendar" };
                 NSError *eventError = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain
-                                                      code:0 userInfo:errorDictionary];
+                                                                 code:0 userInfo:errorDictionary];
                 if (completion) {
                     completion(nil, eventError);
                 }
@@ -101,13 +110,6 @@
             }
         }
     }];
-}
-
--(NSDate *)dateToLocalTime:(NSDate *)date
-{
-    NSTimeZone *tz = [NSTimeZone localTimeZone];
-    NSInteger seconds = [tz secondsFromGMTForDate: date];
-    return [NSDate dateWithTimeInterval: seconds sinceDate: date];
 }
 
 -(NSDate *)dateToGlobalTime:(NSDate *)date
@@ -121,7 +123,12 @@
 {
     [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *anError) {
         if (success) {
-            NSDate *startDate = [self dateToGlobalTime:aStartDate];
+            NSDate *startDate;
+            if (self.convertDatesToGMT) {
+                startDate = [self dateToGlobalTime:aStartDate];
+            } else {
+                startDate = aStartDate;
+            }
             EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
             event.title = title;
             event.startDate = startDate;
@@ -139,7 +146,7 @@
                     completion(nil, eventError);
                 }
             }
-
+            
         } else {
             if (completion) {
                 completion(nil, anError);
@@ -155,7 +162,7 @@
             if (error) {
                 NSLog(@"error adding event to calendar: %@", [error localizedDescription]);
             }
-
+            
             self.hasAccessToEventsStore = granted;
             if (completion) {
                 completion(granted, error);

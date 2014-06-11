@@ -6,6 +6,7 @@
 //
 
 @interface HYPEventManager : NSObject
+@property BOOL convertDatesToGMT; // Default YES.
 
 + (instancetype)sharedManager;
 
