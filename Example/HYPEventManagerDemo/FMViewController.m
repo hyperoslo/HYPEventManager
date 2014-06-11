@@ -9,6 +9,8 @@
 #import "FMViewController.h"
 #import <HYPEventManager.h>
 
+#import <EventKit/EventKit.h>
+
 @interface FMViewController ()
 @property int eventCount;
 @end
@@ -27,7 +29,8 @@
 
 - (void)addEvents
 {
-    if (self.eventCount >= 3) {
+    if (self.eventCount >= 5) {
+        [self printAllEventsWithOddNames];
         return;
     }
     
@@ -36,7 +39,7 @@
     NSString * eventTitle = [@"My event " stringByAppendingString:@(self.eventCount).description];
     
     [[HYPEventManager sharedManager] createEventWithTitle:eventTitle
-                                                startDate:[NSDate dateWithTimeIntervalSinceNow:60*60]
+                                                startDate:[NSDate dateWithTimeIntervalSinceNow:60*60 * self.eventCount * 2]
                                                  duration:0.5
                                                completion:^(NSString *eventIdentifier, NSError *error) {
                                                    NSLog(@"Event created %@", eventIdentifier);
@@ -52,6 +55,17 @@
                                                                                          }];
                                                    });
                                                }];
+}
+
+- (void)printAllEventsWithOddNames
+{
+    [[HYPEventManager sharedManager] nearEventsInCalendarsWithFilter:^BOOL(EKEvent *event) {
+        return [event.title rangeOfString:@"2"].location == NSNotFound && [event.title rangeOfString:@"4"].location == NSNotFound;
+    } completition:^(NSArray *events) {
+        for (EKEvent * event in events) {
+            NSLog(@"%@", event.title);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

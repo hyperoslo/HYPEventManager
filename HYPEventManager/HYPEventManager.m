@@ -62,20 +62,6 @@
     }];
 }
 
-- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
-{
-    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
-        EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
-        if (completion) {
-            if (event) {
-                completion(YES);
-            } else {
-                completion(NO);
-            }
-        }
-    }];
-}
-
 - (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate duration:(NSInteger)duration completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
     NSDate * endDate = [NSDate dateWithTimeInterval:3600 * duration sinceDate:startDate];
@@ -192,6 +178,69 @@
             completion(YES, nil);
         }
     }
+}
+
+@end
+
+@implementation HYPEventManager (Access)
+
+- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
+{
+    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+        EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
+        if (completion) {
+            if (event) {
+                completion(YES);
+            } else {
+                completion(NO);
+            }
+        }
+    }];
+}
+
+- (void)eventsInCalendarsBetweenStartDate:(NSDate*)startDate
+                               andEndDate:(NSDate*)endDate
+                                   filter:(BOOL (^)(EKEvent * event))filter
+                             completition:(void (^)(NSArray * events))completion
+{
+    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+        if (success) {
+            
+            NSMutableArray * result = [NSMutableArray array];
+            
+            NSDate * start = startDate;
+            if (!start) {
+                start = [NSDate dateWithTimeIntervalSinceNow:-60*60*24*30];
+            }
+            NSDate * end = endDate;
+            if (!end) {
+                end = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30];
+            }
+            
+            NSPredicate * predicate = [self.eventStore predicateForEventsWithStartDate:start
+                                                                               endDate:end
+                                                                             calendars:nil];
+            
+            [self.eventStore enumerateEventsMatchingPredicate:predicate
+                                                   usingBlock:^(EKEvent *event, BOOL *stop) {
+                                                       if (filter && filter(event)) {
+                                                           [result addObject:event];
+                                                       }
+                                                   }];
+            if (completion) {
+                completion(result.copy);
+            }
+        } else {
+            if (completion) {
+                completion(nil);
+            }
+        }
+    }];
+}
+
+- (void)nearEventsInCalendarsWithFilter:(BOOL (^)(EKEvent * event))filter completition:(void (^)(NSArray * events))completion
+{
+    [self eventsInCalendarsBetweenStartDate:nil andEndDate:nil filter:filter completition:completion];
 }
 
 @end
