@@ -86,13 +86,19 @@
            completion:completion];
 }
 
-- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
+- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)aStartDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
     [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *anError) {
         if (success) {
             EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
             if (event) {
                 event.title = title;
+                NSDate *startDate;
+                if (self.convertDatesToGMT) {
+                    startDate = [self dateToGlobalTime:aStartDate];
+                } else {
+                    startDate = aStartDate;
+                }
                 event.startDate = startDate;
                 event.endDate = endDate;
                 NSError *eventError = nil;
