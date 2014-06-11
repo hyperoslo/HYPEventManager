@@ -9,6 +9,7 @@
 
 @interface HYPEventManager : NSObject
 
+@property (nonatomic, readonly) EKEventStore *eventStore;
 @property BOOL convertDatesToGMT; // Default YES.
 
 + (instancetype)sharedManager;
