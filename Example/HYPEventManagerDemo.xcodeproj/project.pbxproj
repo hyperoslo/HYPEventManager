@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2B5D07C1947FEE8002F3F8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D07B1947FEE8002F3F8C /* Foundation.framework */; };
+		B2B5D07E1947FEE8002F3F8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D07D1947FEE8002F3F8C /* CoreGraphics.framework */; };
+		B2B5D0801947FEE8002F3F8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D07F1947FEE8002F3F8C /* UIKit.framework */; };
+		B2B5D0861947FEE8002F3F8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2B5D0841947FEE8002F3F8C /* InfoPlist.strings */; };
+		B2B5D0881947FEE8002F3F8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B5D0871947FEE8002F3F8C /* main.m */; };
+		B2B5D08C1947FEE8002F3F8C /* FMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B5D08B1947FEE8002F3F8C /* FMAppDelegate.m */; };
+		B2B5D08F1947FEE8002F3F8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2B5D08D1947FEE8002F3F8C /* Main.storyboard */; };
+		B2B5D0921947FEE8002F3F8C /* FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B5D0911947FEE8002F3F8C /* FMViewController.m */; };
+		B2B5D0941947FEE8002F3F8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B5D0931947FEE8002F3F8C /* Images.xcassets */; };
+		B2B5D09B1947FEE9002F3F8C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D09A1947FEE9002F3F8C /* XCTest.framework */; };
+		B2B5D09C1947FEE9002F3F8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D07B1947FEE8002F3F8C /* Foundation.framework */; };
+		B2B5D09D1947FEE9002F3F8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B5D07F1947FEE8002F3F8C /* UIKit.framework */; };
+		E87664FE42AA4E4EA709133A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D824D03F484F8A8F5BC41E /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2B5D09E1947FEE9002F3F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2B5D0701947FEE8002F3F8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2B5D0771947FEE8002F3F8C;
+			remoteInfo = HYPEventManagerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		61D824D03F484F8A8F5BC41E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		97D83F0135C446079DD230DA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B2B5D0781947FEE8002F3F8C /* HYPEventManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYPEventManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2B5D07B1947FEE8002F3F8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B2B5D07D1947FEE8002F3F8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B2B5D07F1947FEE8002F3F8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B2B5D0831947FEE8002F3F8C /* HYPEventManagerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HYPEventManagerDemo-Info.plist"; sourceTree = "<group>"; };
+		B2B5D0851947FEE8002F3F8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B2B5D0871947FEE8002F3F8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B2B5D0891947FEE8002F3F8C /* HYPEventManagerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HYPEventManagerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		B2B5D08A1947FEE8002F3F8C /* FMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMAppDelegate.h; sourceTree = "<group>"; };
+		B2B5D08B1947FEE8002F3F8C /* FMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMAppDelegate.m; sourceTree = "<group>"; };
+		B2B5D08E1947FEE8002F3F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B2B5D0901947FEE8002F3F8C /* FMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
+		B2B5D0911947FEE8002F3F8C /* FMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
+		B2B5D0931947FEE8002F3F8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B2B5D0991947FEE9002F3F8C /* HYPEventManagerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPEventManagerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2B5D09A1947FEE9002F3F8C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2B5D0751947FEE8002F3F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B5D07E1947FEE8002F3F8C /* CoreGraphics.framework in Frameworks */,
+				B2B5D0801947FEE8002F3F8C /* UIKit.framework in Frameworks */,
+				B2B5D07C1947FEE8002F3F8C /* Foundation.framework in Frameworks */,
+				E87664FE42AA4E4EA709133A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2B5D0961947FEE9002F3F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B5D09B1947FEE9002F3F8C /* XCTest.framework in Frameworks */,
+				B2B5D09D1947FEE9002F3F8C /* UIKit.framework in Frameworks */,
+				B2B5D09C1947FEE9002F3F8C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2B5D06F1947FEE8002F3F8C = {
+			isa = PBXGroup;
+			children = (
+				B2B5D0811947FEE8002F3F8C /* HYPEventManagerDemo */,
+				B2B5D07A1947FEE8002F3F8C /* Frameworks */,
+				B2B5D0791947FEE8002F3F8C /* Products */,
+				97D83F0135C446079DD230DA /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		B2B5D0791947FEE8002F3F8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2B5D0781947FEE8002F3F8C /* HYPEventManagerDemo.app */,
+				B2B5D0991947FEE9002F3F8C /* HYPEventManagerDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2B5D07A1947FEE8002F3F8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2B5D07B1947FEE8002F3F8C /* Foundation.framework */,
+				B2B5D07D1947FEE8002F3F8C /* CoreGraphics.framework */,
+				B2B5D07F1947FEE8002F3F8C /* UIKit.framework */,
+				B2B5D09A1947FEE9002F3F8C /* XCTest.framework */,
+				61D824D03F484F8A8F5BC41E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2B5D0811947FEE8002F3F8C /* HYPEventManagerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B2B5D08A1947FEE8002F3F8C /* FMAppDelegate.h */,
+				B2B5D08B1947FEE8002F3F8C /* FMAppDelegate.m */,
+				B2B5D08D1947FEE8002F3F8C /* Main.storyboard */,
+				B2B5D0901947FEE8002F3F8C /* FMViewController.h */,
+				B2B5D0911947FEE8002F3F8C /* FMViewController.m */,
+				B2B5D0931947FEE8002F3F8C /* Images.xcassets */,
+				B2B5D0821947FEE8002F3F8C /* Supporting Files */,
+			);
+			path = HYPEventManagerDemo;
+			sourceTree = "<group>";
+		};
+		B2B5D0821947FEE8002F3F8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2B5D0831947FEE8002F3F8C /* HYPEventManagerDemo-Info.plist */,
+				B2B5D0841947FEE8002F3F8C /* InfoPlist.strings */,
+				B2B5D0871947FEE8002F3F8C /* main.m */,
+				B2B5D0891947FEE8002F3F8C /* HYPEventManagerDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2B5D0771947FEE8002F3F8C /* HYPEventManagerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2B5D0AA1947FEE9002F3F8C /* Build configuration list for PBXNativeTarget "HYPEventManagerDemo" */;
+			buildPhases = (
+				8BABD2BB95F24DF2903DD0DC /* Check Pods Manifest.lock */,
+				B2B5D0741947FEE8002F3F8C /* Sources */,
+				B2B5D0751947FEE8002F3F8C /* Frameworks */,
+				B2B5D0761947FEE8002F3F8C /* Resources */,
+				A21B289ADF4846B3AE370489 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYPEventManagerDemo;
+			productName = HYPEventManagerDemo;
+			productReference = B2B5D0781947FEE8002F3F8C /* HYPEventManagerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B2B5D0981947FEE9002F3F8C /* HYPEventManagerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2B5D0AD1947FEE9002F3F8C /* Build configuration list for PBXNativeTarget "HYPEventManagerDemoTests" */;
+			buildPhases = (
+				B2B5D0951947FEE9002F3F8C /* Sources */,
+				B2B5D0961947FEE9002F3F8C /* Frameworks */,
+				B2B5D0971947FEE9002F3F8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2B5D09F1947FEE9002F3F8C /* PBXTargetDependency */,
+			);
+			name = HYPEventManagerDemoTests;
+			productName = HYPEventManagerDemoTests;
+			productReference = B2B5D0991947FEE9002F3F8C /* HYPEventManagerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2B5D0701947FEE8002F3F8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FM;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "fitmob inc";
+				TargetAttributes = {
+					B2B5D0981947FEE9002F3F8C = {
+						TestTargetID = B2B5D0771947FEE8002F3F8C;
+					};
+				};
+			};
+			buildConfigurationList = B2B5D0731947FEE8002F3F8C /* Build configuration list for PBXProject "HYPEventManagerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B2B5D06F1947FEE8002F3F8C;
+			productRefGroup = B2B5D0791947FEE8002F3F8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2B5D0771947FEE8002F3F8C /* HYPEventManagerDemo */,
+				B2B5D0981947FEE9002F3F8C /* HYPEventManagerDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2B5D0761947FEE8002F3F8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B5D0941947FEE8002F3F8C /* Images.xcassets in Resources */,
+				B2B5D0861947FEE8002F3F8C /* InfoPlist.strings in Resources */,
+				B2B5D08F1947FEE8002F3F8C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2B5D0971947FEE9002F3F8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8BABD2BB95F24DF2903DD0DC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A21B289ADF4846B3AE370489 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2B5D0741947FEE8002F3F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B5D0881947FEE8002F3F8C /* main.m in Sources */,
+				B2B5D08C1947FEE8002F3F8C /* FMAppDelegate.m in Sources */,
+				B2B5D0921947FEE8002F3F8C /* FMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2B5D0951947FEE9002F3F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2B5D09F1947FEE9002F3F8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2B5D0771947FEE8002F3F8C /* HYPEventManagerDemo */;
+			targetProxy = B2B5D09E1947FEE9002F3F8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2B5D0841947FEE8002F3F8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2B5D0851947FEE8002F3F8C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B2B5D08D1947FEE8002F3F8C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2B5D08E1947FEE8002F3F8C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B2B5D0A81947FEE9002F3F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B2B5D0A91947FEE9002F3F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B2B5D0AB1947FEE9002F3F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D83F0135C446079DD230DA /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HYPEventManagerDemo/HYPEventManagerDemo-Prefix.pch";
+				INFOPLIST_FILE = "HYPEventManagerDemo/HYPEventManagerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B2B5D0AC1947FEE9002F3F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D83F0135C446079DD230DA /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HYPEventManagerDemo/HYPEventManagerDemo-Prefix.pch";
+				INFOPLIST_FILE = "HYPEventManagerDemo/HYPEventManagerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B2B5D0AE1947FEE9002F3F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HYPEventManagerDemo.app/HYPEventManagerDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HYPEventManagerDemo/HYPEventManagerDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HYPEventManagerDemoTests/HYPEventManagerDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B2B5D0AF1947FEE9002F3F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HYPEventManagerDemo.app/HYPEventManagerDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HYPEventManagerDemo/HYPEventManagerDemo-Prefix.pch";
+				INFOPLIST_FILE = "HYPEventManagerDemoTests/HYPEventManagerDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2B5D0731947FEE8002F3F8C /* Build configuration list for PBXProject "HYPEventManagerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2B5D0A81947FEE9002F3F8C /* Debug */,
+				B2B5D0A91947FEE9002F3F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2B5D0AA1947FEE9002F3F8C /* Build configuration list for PBXNativeTarget "HYPEventManagerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2B5D0AB1947FEE9002F3F8C /* Debug */,
+				B2B5D0AC1947FEE9002F3F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2B5D0AD1947FEE9002F3F8C /* Build configuration list for PBXNativeTarget "HYPEventManagerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2B5D0AE1947FEE9002F3F8C /* Debug */,
+				B2B5D0AF1947FEE9002F3F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2B5D0701947FEE8002F3F8C /* Project object */;
+}
