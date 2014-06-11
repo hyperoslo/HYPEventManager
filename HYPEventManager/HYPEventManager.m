@@ -76,6 +76,16 @@
     }];
 }
 
+- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate duration:(NSInteger)duration completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
+{
+    NSDate * endDate = [NSDate dateWithTimeInterval:3600 * duration sinceDate:startDate];
+    [self updateEvent:eventIdentifier
+            withTitle:title
+            startDate:startDate
+              endDate:endDate
+           completion:completion];
+}
+
 - (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
     [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *anError) {
