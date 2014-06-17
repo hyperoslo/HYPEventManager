@@ -23,8 +23,17 @@
     dispatch_once(&onceToken, ^{
         __sharedInstance = [[HYPEventManager alloc] init];
     });
-
+    
     return __sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.convertDatesToGMT = YES;
+    }
+    return self;
 }
 
 - (EKEventStore *)eventStore
@@ -53,27 +62,32 @@
     }];
 }
 
-- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
+- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate duration:(NSInteger)duration completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
-    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
-        EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
-        if (completion) {
-            if (event) {
-                completion(YES);
-            } else {
-                completion(NO);
-            }
-        }
-    }];
+    NSDate * endDate = [NSDate dateWithTimeInterval:3600 * duration sinceDate:startDate];
+    if (self.convertDatesToGMT) {
+        endDate = [self dateToGlobalTime:endDate];
+    }
+    [self updateEvent:eventIdentifier
+            withTitle:title
+            startDate:startDate
+              endDate:endDate
+           completion:completion];
 }
 
-- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
+- (void)updateEvent:(NSString *)eventIdentifier withTitle:(NSString *)title startDate:(NSDate *)aStartDate endDate:(NSDate *)endDate completion:(void (^)(NSString *eventIdentifier, NSError *error))completion
 {
     [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *anError) {
         if (success) {
             EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
             if (event) {
                 event.title = title;
+                NSDate *startDate;
+                if (self.convertDatesToGMT) {
+                    startDate = [self dateToGlobalTime:aStartDate];
+                } else {
+                    startDate = aStartDate;
+                }
                 event.startDate = startDate;
                 event.endDate = endDate;
                 NSError *eventError = nil;
@@ -90,7 +104,7 @@
             } else {
                 NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : @"Event not found in calendar" };
                 NSError *eventError = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain
-                                                      code:0 userInfo:errorDictionary];
+                                                                 code:0 userInfo:errorDictionary];
                 if (completion) {
                     completion(nil, eventError);
                 }
@@ -101,13 +115,6 @@
             }
         }
     }];
-}
-
--(NSDate *)dateToLocalTime:(NSDate *)date
-{
-    NSTimeZone *tz = [NSTimeZone localTimeZone];
-    NSInteger seconds = [tz secondsFromGMTForDate: date];
-    return [NSDate dateWithTimeInterval: seconds sinceDate: date];
 }
 
 -(NSDate *)dateToGlobalTime:(NSDate *)date
@@ -121,7 +128,12 @@
 {
     [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *anError) {
         if (success) {
-            NSDate *startDate = [self dateToGlobalTime:aStartDate];
+            NSDate *startDate;
+            if (self.convertDatesToGMT) {
+                startDate = [self dateToGlobalTime:aStartDate];
+            } else {
+                startDate = aStartDate;
+            }
             EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
             event.title = title;
             event.startDate = startDate;
@@ -139,7 +151,7 @@
                     completion(nil, eventError);
                 }
             }
-
+            
         } else {
             if (completion) {
                 completion(nil, anError);
@@ -155,7 +167,7 @@
             if (error) {
                 NSLog(@"error adding event to calendar: %@", [error localizedDescription]);
             }
-
+            
             self.hasAccessToEventsStore = granted;
             if (completion) {
                 completion(granted, error);
@@ -166,6 +178,69 @@
             completion(YES, nil);
         }
     }
+}
+
+@end
+
+@implementation HYPEventManager (Access)
+
+- (void)isEventInCalendar:(NSString *)eventIdentifier completion:(void (^)(BOOL found))completion
+{
+    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+        EKEvent *event = [self.eventStore eventWithIdentifier:eventIdentifier];
+        if (completion) {
+            if (event) {
+                completion(YES);
+            } else {
+                completion(NO);
+            }
+        }
+    }];
+}
+
+- (void)eventsInCalendarsBetweenStartDate:(NSDate*)startDate
+                               andEndDate:(NSDate*)endDate
+                                   filter:(BOOL (^)(EKEvent * event))filter
+                             completition:(void (^)(NSArray * events))completion
+{
+    [self requestAccessToEventStoreWithCompletion:^(BOOL success, NSError *error) {
+        if (success) {
+            
+            NSMutableArray * result = [NSMutableArray array];
+            
+            NSDate * start = startDate;
+            if (!start) {
+                start = [NSDate dateWithTimeIntervalSinceNow:-60*60*24*30];
+            }
+            NSDate * end = endDate;
+            if (!end) {
+                end = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30];
+            }
+            
+            NSPredicate * predicate = [self.eventStore predicateForEventsWithStartDate:start
+                                                                               endDate:end
+                                                                             calendars:nil];
+            
+            [self.eventStore enumerateEventsMatchingPredicate:predicate
+                                                   usingBlock:^(EKEvent *event, BOOL *stop) {
+                                                       if (filter && filter(event)) {
+                                                           [result addObject:event];
+                                                       }
+                                                   }];
+            if (completion) {
+                completion(result.copy);
+            }
+        } else {
+            if (completion) {
+                completion(nil);
+            }
+        }
+    }];
+}
+
+- (void)nearEventsInCalendarsWithFilter:(BOOL (^)(EKEvent * event))filter completition:(void (^)(NSArray * events))completion
+{
+    [self eventsInCalendarsBetweenStartDate:nil andEndDate:nil filter:filter completition:completion];
 }
 
 @end
