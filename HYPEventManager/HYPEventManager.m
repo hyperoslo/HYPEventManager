@@ -90,6 +90,8 @@
                 }
                 event.startDate = startDate;
                 event.endDate = endDate;
+                event.alarms = [NSArray arrayWithObject:[EKAlarm alarmWithAbsoluteDate:event.startDate]];
+                
                 NSError *eventError = nil;
                 BOOL created = [self.eventStore saveEvent:event span:EKSpanThisEvent error:&eventError];
                 if (created) {
